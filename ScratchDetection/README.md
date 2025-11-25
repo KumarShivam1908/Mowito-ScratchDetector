@@ -158,23 +158,6 @@ Available options:
 - `--save-csv`: Save results to CSV
 - `--batch-size`: Batch size (default: 32)
 
-## Model Performance Summary
-
-Based on validation set evaluation:
-
-| Model | Type | Accuracy | F1 Score | Inference Time |
-|-------|------|----------|----------|----------------|
-| DeiT | Transformer | 88.28% | 0.8951 | 17.60s |
-| Swin Transformer | Transformer | 85.47% | 0.8689 | 18.73s |
-| ResNet50 | CNN | 84.67% | 0.8637 | 7.57s |
-| DINOv2 | Transformer | 84.59% | 0.8644 | 22.98s |
-| ViT-Large | Transformer | 83.47% | 0.8524 | 46.46s |
-| ViT-Base | Transformer | 72.07% | 0.7708 | 17.85s |
-| InceptionV3 | CNN | 63.40% | 0.7054 | 10.31s |
-| MobileNetV3 | CNN | 58.43% | 0.6481 | 5.01s |
-
-**Best Model**: DeiT (88.28% validation accuracy)
-
 ## Training Features
 
 - Early stopping with configurable patience
