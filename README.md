@@ -7,7 +7,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 > **Pre-trained Model Weights**: Due to GitHub's file size limitations, all trained model weights are available for download at:  
-> **[Google Drive - Model Weights](https://drive.google.com/drive/folders/1Qo2wahYckeTQujS6Wxdqv-BoDjTGokaL?usp=sharing)**
+> **[Google Drive - Model Weights](https://drive.google.com/drive/folders/1q2kpYe6ExqWqmkdo4hXbIXnO9OFUHYiI?usp=drive_link)**
 
 ---
 

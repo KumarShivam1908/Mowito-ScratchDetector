@@ -246,4 +246,140 @@ Model Type & Avg Time (ms) & Median Time (ms) & Std Dev (ms) & FPS & Speedup vs 
 \end{tabular}
 \end{table}
 
+\clearpage
+
+\heading{Why It Worked: Analysis of Success Factors}
+
+The success of this project can be attributed to several key strategic decisions and methodological choices:
+
+\textbf{1. Data-Centric Approach}
+
+The \redbold{targeted augmentation strategy} was crucial. Rather than applying generic augmentation to all samples, I focused exclusively on the minority ``Bad'' class. This approach:
+\begin{itemize}
+    \item Preserved the natural distribution of ``Good'' samples for better real-world representation
+    \item Generated meaningful variations of defects while maintaining their structural characteristics
+    \item Successfully balanced the dataset without introducing artificial bias
+\end{itemize}
+
+\textbf{2. Architecture Selection Philosophy}
+
+The decision to explore \redbold{both CNNs and Transformers} proved invaluable. The comparative analysis revealed that:
+\begin{itemize}
+    \item \redbold{Transformers excel at capturing global context}, which is critical for detecting subtle scratches across an entire surface
+    \item DeiT's attention mechanism could focus on fine-grained defect patterns that CNNs might miss
+    \item The \redbold{100\% recall on the ``Bad'' class} demonstrates that Transformers effectively learned to identify all defective samples
+\end{itemize}
+
+\textbf{3. Transfer Learning and Pre-training}
+
+Leveraging \redbold{pre-trained weights} from models trained on ImageNet provided:
+\begin{itemize}
+    \item Strong feature extractors that could generalize to scratch detection
+    \item Faster convergence during training (50 epochs vs. potentially 100+ from scratch)
+    \item Better performance with limited data (5,180 images is relatively small for deep learning)
+\end{itemize}
+
+\textbf{4. Ensemble Strategy}
+
+The \redbold{combination of classification and localization} models created a robust system:
+\begin{itemize}
+    \item Classification provides high-level decision making
+    \item Localization adds spatial verification and interpretability
+    \item Human-in-the-loop for ambiguous cases prevents costly false negatives
+\end{itemize}
+
+\textbf{5. Deployment Optimization}
+
+The \redbold{TensorRT optimization} achieved \redbold{2.69× speedup} because:
+\begin{itemize}
+    \item Layer fusion reduced memory bandwidth requirements
+    \item Kernel auto-tuning optimized operations for specific GPU hardware
+    \item Precision calibration (FP16) maintained accuracy while improving throughput
+\end{itemize}
+
+\textbf{What Didn't Work as Expected:}
+
+\begin{itemize}
+    \item \redbold{MobileNetV3 showed instability} - The lightweight architecture struggled with the learning rate, suggesting that smaller models require more careful hyperparameter tuning for this task
+    \item \redbold{InceptionV3 overfitted} - Despite its sophisticated architecture, it failed to generalize, likely due to its complexity relative to dataset size
+    \item \redbold{StyleGAN2 at 64×64 resolution} - While promising, the low resolution limited practical applicability; higher resolutions would require significantly more compute
+\end{itemize}
+
+\clearpage
+
+\heading{Future Improvements: With More Time and Compute}
+
+Given additional resources, I would pursue the following directions to further enhance the system:
+
+\textbf{1. Advanced Model Architectures}
+
+\begin{itemize}
+    \item \redbold{Vision Transformer variants}: Explore newer architectures like \redbold{DeiT-III, BEiT, or MAE} which have shown superior performance on fine-grained visual tasks
+    \item \redbold{Hierarchical Vision Transformers}: Models like Swin V2 or MaxViT that can capture both local and global features more efficiently
+    \item \redbold{Efficient Transformers}: Investigate models like EfficientFormer or MobileViT for better speed-accuracy trade-offs in deployment
+\end{itemize}
+
+\textbf{2. Self-Supervised and Semi-Supervised Learning}
+
+With more compute, I would implement:
+\begin{itemize}
+    \item \redbold{Masked Autoencoder (MAE) pre-training} on unlabeled scratch images to learn better representations before fine-tuning
+    \item \redbold{Contrastive learning} (SimCLR, MoCo) to learn discriminative features from augmented views of scratch patterns
+    \item \redbold{Pseudo-labeling} to leverage large amounts of unlabeled industrial inspection data
+\end{itemize}
+
+\textbf{3. Enhanced Data Generation}
+
+\begin{itemize}
+    \item \redbold{High-resolution StyleGAN3} (256×256 or 512×512) with progressive growing for photorealistic synthetic scratches
+    \item \redbold{Diffusion models} (Stable Diffusion, DALL-E) fine-tuned on scratch patterns for controllable synthetic data generation
+    \item \redbold{3D simulation pipeline}: Create physically-based scratch models with realistic lighting and material properties, then render using path tracing
+    \item \redbold{Domain randomization}: Vary lighting, surface textures, and camera angles to improve model robustness
+\end{itemize}
+
+\textbf{4. Advanced Training Techniques}
+
+\begin{itemize}
+    \item \redbold{Focal Loss} to better handle class imbalance and focus on hard examples
+    \item \redbold{Knowledge distillation} from the large DeiT model to a smaller, faster student model for deployment
+    \item \redbold{Multi-task learning}: Jointly train on classification, segmentation, and localization for better feature sharing
+    \item \redbold{Test-time augmentation (TTA)} to improve inference accuracy through ensemble predictions
+\end{itemize}
+
+\textbf{5. Deployment and Production Optimizations}
+
+\begin{itemize}
+    \item \redbold{INT8 quantization} on TensorRT for potentially \redbold{3--5× additional speedup} with minimal accuracy loss
+    \item \redbold{Knowledge distillation} to create a lightweight student model (e.g., MobileNetV3) that matches DeiT's accuracy
+    \item \redbold{ONNX Runtime optimizations} with dynamic quantization and graph optimizations
+    \item \redbold{Edge deployment}: Optimize models for deployment on edge devices (NVIDIA Jetson, Intel NUC) for real-time factory inspections
+    \item \redbold{Multi-GPU and batched inference} for high-throughput scenarios
+\end{itemize}
+
+\textbf{6. Model Interpretability and Robustness}
+
+\begin{itemize}
+    \item \redbold{Attention visualization} to understand what features the Transformer focuses on when detecting scratches
+    \item \redbold{Grad-CAM and SHAP} analysis for better interpretability and debugging
+    \item \redbold{Adversarial training} to improve robustness against variations in lighting, surface reflections, and camera noise
+    \item \redbold{Uncertainty quantification} using techniques like Monte Carlo Dropout or Deep Ensembles to provide confidence intervals with predictions
+\end{itemize}
+
+\textbf{7. Extended Ensemble and Active Learning}
+
+\begin{itemize}
+    \item \redbold{Model ensembles}: Combine DeiT, Swin, and ResNet50 predictions using weighted voting or stacking
+    \item \redbold{Active learning pipeline}: Automatically identify ambiguous cases for human labeling to continuously improve the model
+    \item \redbold{Online learning}: Update models periodically with new production data to adapt to changing scratch patterns
+\end{itemize}
+
+\textbf{8. Real-World Deployment Considerations}
+
+\begin{itemize}
+    \item \redbold{A/B testing framework} to gradually roll out new models while monitoring performance
+    \item \redbold{Model monitoring}: Track inference latency, accuracy drift, and data distribution shifts in production
+    \item \redbold{Fallback mechanisms}: Implement graceful degradation when models are uncertain
+    \item \redbold{Multi-stage pipeline}: Use fast CNN models for initial screening, then deploy expensive Transformer models only on borderline cases
+\end{itemize}
+
 \end{document}
