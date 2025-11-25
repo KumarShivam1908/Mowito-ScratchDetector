@@ -42,9 +42,9 @@ datasets/
 
 # Results
 results/
-*.png
-*.jpg
-*.jpeg
+# *.png
+# *.jpg
+# *.jpeg
 
 # IDE
 .vscode/
