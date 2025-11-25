@@ -6,7 +6,8 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-
+> **Pre-trained Model Weights**: Due to GitHub's file size limitations, all trained model weights are available for download at:  
+> **[Google Drive - Model Weights](https://drive.google.com/drive/folders/1Qo2wahYckeTQujS6Wxdqv-BoDjTGokaL?usp=sharing)**
 
 ---
 
