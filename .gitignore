@@ -25,7 +25,7 @@ wheels/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-*.ipynb
+# *.ipynb
 
 # Models (Allowed)
 # *.pth
