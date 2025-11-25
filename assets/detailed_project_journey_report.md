@@ -132,11 +132,11 @@ Once the modeling was complete, my main concern was **how to optimize the infere
 <img src="assets/image-12.png" width="500" alt="TensorRT Pipeline" />
 <br><br>
 
-The process begins with a model trained in PyTorch (saved as a `.pth` file), which is then converted to the **ONNX format** to make it framework-independent and suitable for deployment. Next, the ONNX model is optimized using **NVIDIA TensorRT**, which significantly accelerates inference, achieving up to **10× faster speed** compared to the original PyTorch model.
+The process begins with a model trained in PyTorch (saved as a `.pth` file), which is then converted to the **ONNX format** to make it framework-independent and suitable for deployment. Next, the ONNX model is optimized using **NVIDIA TensorRT**, which significantly accelerates inference, achieving up to **2.69× faster speed** compared to the original PyTorch model.
 
-## Inference Benchmark Results
+### Inference Benchmark Results
 
-Benchmark Date: **November 26, 2025 - 03:13:26**  
+
 Test Images: **100 images**
 
 | Model Type | Avg Time (ms) | Median Time (ms) | Std Dev (ms) | FPS | Speedup vs PyTorch |
@@ -145,8 +145,3 @@ Test Images: **100 images**
 | **ONNX** | 8.67 | 8.34 | 0.75 | 115.3 | **1.08× faster** |
 | **TensorRT** | 3.49 | 3.40 | 0.45 | 286.5 | **2.69× faster** |
 
-### Key Findings
-
-- **ONNX Runtime** provides a modest **8% speedup** over PyTorch with better consistency (lower std deviation)
-- **TensorRT** delivers exceptional performance with **2.7× speedup**, achieving nearly **3× the FPS** of the PyTorch baseline
-- TensorRT's optimizations result in **sub-4ms inference times**, making it ideal for real-time applications
