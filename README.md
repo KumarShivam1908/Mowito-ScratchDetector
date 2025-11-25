@@ -6,7 +6,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12+-red.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-**Best Model Performance**: DeiT Transformer with **88.28% accuracy** | **TensorRT Optimization**: **2.69× speedup**
+
 
 ---
 
