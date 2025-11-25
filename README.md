@@ -1,4 +1,4 @@
-#  Scratch Detection 🔍
+# Scratch Detection
 
 > A comprehensive computer vision project for detecting and classifying surface defects using deep learning models (CNNs & Transformers), with advanced data generation and deployment optimization.
 
@@ -10,44 +10,44 @@
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
-- [Overview](#-overview)
-- [Problem Statement](#-problem-statement)
-- [Dataset Analysis](#-dataset-analysis)
-- [Methodology](#-methodology)
+- [Overview](#overview)
+- [Problem Statement](#problem-statement)
+- [Dataset Analysis](#dataset-analysis)
+- [Methodology](#methodology)
   - [Model Selection Strategy](#model-selection-strategy)
   - [Training Configuration](#training-configuration)
-- [Model Performance](#-model-performance)
+- [Model Performance](#model-performance)
   - [CNN Models](#cnn-models)
   - [Transformer Models](#transformer-models)
   - [Comparative Analysis](#comparative-analysis)
-- [Defect Localization](#-defect-localization--ensemble-strategy)
-- [Advanced Data Generation](#-advanced-data-generation)
-- [Deployment & Optimization](#-deployment--optimization)
-- [Model Profiling Tools](#-model-profiling-tools)
-- [Project Structure](#-project-structure)
-- [Quick Start](#-quick-start)
-- [Usage Examples](#-usage-examples)
-- [Results Summary](#-results-summary)
+- [Defect Localization](#defect-localization--ensemble-strategy)
+- [Data Generation](#data-generation)
+- [Deployment & Optimization](#deployment--optimization)
+- [Model Profiling Tools](#model-profiling-tools)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Usage Examples](#usage-examples)
+- [Results Summary](#results-summary)
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project develops a comprehensive computer vision system for automated surface scratch detection. The system classifies images as **"Good" (defect-free)** or **"Bad" (containing scratches)** using multiple state-of-the-art deep learning models.
 
 **Key Features:**
-- ✅ 8 Model Architectures (CNNs + Transformers)
-- ✅ YOLOv11 Integration for Defect Localization
-- ✅ Ensemble Strategy for Enhanced Accuracy
-- ✅ GAN-based Synthetic Data Generation
-- ✅ TensorRT Optimization for Deployment
-- ✅ Comprehensive Model Profiling Tools
+- 8 Model Architectures (CNNs + Transformers)
+- YOLOv11 Integration for Defect Localization
+- Ensemble Strategy for Enhanced Accuracy
+- GAN-based Synthetic Data Generation
+- TensorRT Optimization for Deployment
+- Comprehensive Model Profiling Tools
 
 ---
 
-## 📋 Problem Statement
+## Problem Statement
 
 The objective is to develop a computer vision model capable of identifying surface defects on products. The model needs to:
 
@@ -60,7 +60,7 @@ The objective is to develop a computer vision model capable of identifying surfa
 
 ---
 
-## 📊 Dataset Analysis
+## Dataset Analysis
 
 ### Class Distribution
 
@@ -87,7 +87,7 @@ To address this imbalance, a **targeted augmentation strategy** was implemented:
 
 ---
 
-## 🧪 Methodology
+## Methodology
 
 ### Model Selection Strategy
 
@@ -110,7 +110,7 @@ Early Stopping: Enabled (patience=10)
 
 ---
 
-## 📈 Model Performance
+## Model Performance
 
 ### CNN Models
 
@@ -167,7 +167,7 @@ Early Stopping: Enabled (patience=10)
 
 ---
 
-## 🎯 Defect Localization & Ensemble Strategy
+## Defect Localization & Ensemble Strategy
 
 With classification solved, the next step was **defect localization** - identifying the exact region of scratches.
 
@@ -183,9 +183,9 @@ The system combines classification and detection outputs to categorize images in
 
 ![Ensemble Pipeline](assets/image-10.png)
 
-1. **🟢 Good**: Classifier predicts "Good" with high confidence + No scratch detected
-2. **🔴 Bad**: Classifier predicts "Bad" + Detector confirms scratch with high confidence
-3. **🟡 Human Review**: Ambiguous cases (e.g., Good + Scratches detected, or low confidence scores)
+1. **Good**: Classifier predicts "Good" with high confidence + No scratch detected
+2. **Bad**: Classifier predicts "Bad" + Detector confirms scratch with high confidence
+3. **Human Review**: Ambiguous cases (e.g., Good + Scratches detected, or low confidence scores)
 
 ### Sample Detection Outputs
 
@@ -202,7 +202,7 @@ The system combines classification and detection outputs to categorize images in
 
 ---
 
-## 🎨 Advanced Data Generation
+## Data Generation
 
 To increase dataset size beyond standard augmentation, two GAN-based approaches were explored:
 
@@ -225,7 +225,7 @@ Cyclic discriminator-generator approach for unpaired image-to-image translation
 
 ---
 
-## 🚀 Deployment & Optimization
+## Deployment & Optimization
 
 ### Optimization Pipeline
 
@@ -247,22 +247,22 @@ Cyclic discriminator-generator approach for unpaired image-to-image translation
 | **TensorRT** | 3.49 | 3.40 | 0.45 | 286.5 | **2.69× faster** |
 
 **Key Findings:**
-- ✅ ONNX Runtime provides 8% speedup with better consistency (lower std deviation)
-- ✅ TensorRT delivers exceptional **2.7× speedup**, achieving **sub-4ms inference times**
-- ✅ Ideal for real-time applications requiring high throughput
+- ONNX Runtime provides 8% speedup with better consistency (lower std deviation)
+- TensorRT delivers exceptional **2.7× speedup**, achieving **sub-4ms inference times**
+- Ideal for real-time applications requiring high throughput
 
 ---
 
-## 🔧 Model Profiling Tools
+## Model Profiling Tools
 
 The `Model Profiling` directory contains tools for benchmarking PyTorch, ONNX, and TensorRT models.
 
 ### Features
 
-- ✅ Benchmark all 3 model formats in one run
-- ✅ Detailed statistics (avg, median, std dev, FPS)
-- ✅ CSV export for tracking performance over time
-- ✅ Auto-detect model architecture and classes
+- Benchmark all 3 model formats in one run
+- Detailed statistics (avg, median, std dev, FPS)
+- CSV export for tracking performance over time
+- Auto-detect model architecture and classes
 
 ### Usage
 
@@ -289,7 +289,7 @@ See [Model Profiling README](Model%20Profiling/README.md) for detailed documenta
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Inference/
@@ -331,7 +331,7 @@ Inference/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -368,7 +368,7 @@ python verify_setup.py
 
 ---
 
-## 💻 Usage Examples
+## Usage Examples
 
 ### Training a Model
 
@@ -434,7 +434,7 @@ jupyter notebook notebooks/sdg-gan-inference.ipynb
 
 ---
 
-## 🏆 Results Summary
+## Results Summary
 
 ### Best Performing Models
 
@@ -454,34 +454,23 @@ jupyter notebook notebooks/sdg-gan-inference.ipynb
 
 ### Key Achievements
 
-- ✅ **88.28% accuracy** on scratch detection
-- ✅ **100% recall** on "Bad" class (DeiT model)
-- ✅ **2.69× faster** inference with TensorRT
-- ✅ **Sub-4ms** inference times for real-time deployment
-- ✅ Successfully balanced imbalanced dataset
-- ✅ Integrated ensemble strategy for improved reliability
+- **88.28% accuracy** on scratch detection
+- **100% recall** on "Bad" class (DeiT model)
+- **2.69× faster** inference with TensorRT
+- **Sub-4ms** inference times for real-time deployment
+- Successfully balanced imbalanced dataset
+- Integrated ensemble strategy for improved reliability
+
 
 ---
 
-## 🔮 Future Work
-
-- [ ] Deploy YOLOv11 + Classifier ensemble to production
-- [ ] Explore quantization (INT8) for further speedup
-- [ ] Implement multi-GPU training support
-- [ ] Add confidence-based active learning
-- [ ] Extend to multi-class scratch severity classification
-- [ ] Create web interface for model deployment
-- [ ] Implement model interpretability (Grad-CAM, SHAP)
-
----
-
-## 📝 License
+## License
 
 This project is for educational and research purposes.
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **Dataset**: Provided scratch detection dataset with 5,180 images
 - **Models**: Pre-trained weights from torchvision and timm libraries
@@ -489,7 +478,7 @@ This project is for educational and research purposes.
 
 ---
 
-## 📧 Contact
+## Contact
 
 For questions or collaborations, please open an issue or reach out through GitHub.
 
@@ -497,8 +486,8 @@ For questions or collaborations, please open an issue or reach out through GitHu
 
 <div align="center">
 
-**⭐ Star this repository if you find it helpful!**
+**Star this repository if you find it helpful!**
 
-Made with ❤️ for automated quality inspection
+Made for automated quality inspection
 
 </div>
